@@ -1,7 +1,9 @@
 package com.willy.springbootmall.controller;
 
+import com.willy.springbootmall.dto.ProductRequest;
 import com.willy.springbootmall.model.Product;
 import com.willy.springbootmall.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,15 @@ public class ProductController {
         }else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+    }
+
+    @PostMapping("/products")
+    public ResponseEntity<Product> createProduct(@RequestBody @Valid ProductRequest productRequest){
+        Integer productId = productService.createProduct(productRequest);
+
+        Product product = productService.getProductById(productId);
+
+        return  ResponseEntity.status(HttpStatus.CREATED).body(product);
     }
 
 }
