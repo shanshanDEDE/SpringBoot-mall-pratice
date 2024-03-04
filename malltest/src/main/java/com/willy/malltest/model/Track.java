@@ -6,7 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.apache.catalina.User;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "Track")
 public class Track {
