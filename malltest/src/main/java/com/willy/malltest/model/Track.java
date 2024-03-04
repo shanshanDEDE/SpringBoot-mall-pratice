@@ -1,7 +1,6 @@
 package com.willy.malltest.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.catalina.User;
@@ -14,14 +13,21 @@ public class Track {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long trackID;
+    @Column(name = "TrackID")
+    private int  trackID;
 
     @Column(name = "SpecID")
     private String specID;
 
-    @Column(name = "UserID")
-    private Long userID;
+//    @ManyToOne
+//    @JoinColumn(name = "SpecID", referencedColumnName = "SpecID")
+//    private ProductSpec ProductSpec;
+
+    @ManyToOne
+    @JoinColumn(name = "UserID", referencedColumnName = "UserID")
+    private Users users;
 
     public Track() {
+
     }
 }

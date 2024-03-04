@@ -1,9 +1,9 @@
 package com.willy.malltest.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+
 
 import java.util.Date;
 
@@ -15,13 +15,16 @@ public class CustomerFeedback {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long feedbackID;
+    @Column(name = "FeedbackID")
+    private int feedbackID;
 
-    @Column(name = "UserID")
-    private Long userID;
+    @ManyToOne
+    @JoinColumn(name = "UserID", referencedColumnName = "UserID")
+    private Users users;
 
-    @Column(name = "OrderID")
-    private Long orderID;
+    @ManyToOne
+    @JoinColumn(name = "OrderID", referencedColumnName = "OrderID")
+    private Orders orders;
 
     @Column(name = "Type")
     private String type;
