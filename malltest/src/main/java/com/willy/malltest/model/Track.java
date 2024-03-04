@@ -11,23 +11,29 @@ import org.apache.catalina.User;
 @Table(name = "Track")
 public class Track {
 
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "TrackID")
+//    private int  trackID;
+//
+//    @Column(name = "SpecID")
+//    private String specID;
+
+
+//    @ManyToOne
+//    @JoinColumn(name = "UserID", referencedColumnName = "UserID")
+//    private Users users;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TrackID")
     private int  trackID;
 
-    @Column(name = "SpecID")
-    private String specID;
-
-//    @ManyToOne
-//    @JoinColumn(name = "SpecID", referencedColumnName = "SpecID")
-//    private ProductSpec ProductSpec;
-
     @ManyToOne
     @JoinColumn(name = "UserID", referencedColumnName = "UserID")
-    private Users users;
+    private User user;
 
-    public Track() {
-
-    }
+    @ManyToOne
+    @JoinColumn(name = "SpecID", referencedColumnName = "SpecID")
+    private ProductSpec productSpec;
 }

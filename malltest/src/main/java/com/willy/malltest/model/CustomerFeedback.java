@@ -20,7 +20,7 @@ public class CustomerFeedback {
 
     @ManyToOne
     @JoinColumn(name = "UserID", referencedColumnName = "UserID")
-    private Users users;
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "OrderID", referencedColumnName = "OrderID")
@@ -38,6 +38,4 @@ public class CustomerFeedback {
     @Column(name = "CustomerFeedbackStatus")
     private String customerFeedbackStatus;
 
-    public CustomerFeedback() {
-    }
 }
